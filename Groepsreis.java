@@ -1,7 +1,6 @@
 package reisbureau;
 
-import org.jetbrains.annotations.NotNull;
-
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Groepsreis {
@@ -36,11 +35,12 @@ public class Groepsreis {
     }
 
     public void printToeristBudgets() {
+
         System.out.println("Het huidige budget per toerist: ");
         System.out.println("==========");
         for (Toerist t : toeristen) {
             System.out.print("- ");
-            System.out.println(t.getName() + " € " + t.getBudget());
+            System.out.println(t.getName() + " € " + t.getStringBudget());
         }
     }
 

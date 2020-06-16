@@ -1,5 +1,7 @@
 package reisbureau;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
@@ -28,8 +30,12 @@ public class Toerist {
         return this.landVanHerkomst;
     }
 
-    public String getBudget() {
-        DecimalFormat df = new DecimalFormat("#.00");
+    public double getBudget() {
+        return this.budget;
+    }
+
+    public String getStringBudget() {
+        DecimalFormat df = new DecimalFormat("0.00");
         return df.format(this.budget);
     }
 
@@ -38,9 +44,13 @@ public class Toerist {
     }
 
     public void buySouvenir(Souvenir s) {
-/*        if (getBudget() - s.getPrice() < getBudget()) {
+        if ((getBudget() - s.getPrice()) > 0) {
+            this.budget -= s.getPrice();
+            System.out.println(this.naam + " koopt een " + s.getName());
+        } else {
+            System.out.println(this.naam + " wil een " + s.getName() + " kopen, maar heeft onvoldoende budget.");
+        }
 
-        }*/
     }
 
     public void spendMoney(double geld) {
@@ -58,5 +68,13 @@ public class Toerist {
         } else {
             this.budget -= g;
         }
+    }
+
+    public static double round(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(places, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 }

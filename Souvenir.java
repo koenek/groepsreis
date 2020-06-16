@@ -11,8 +11,16 @@ public class Souvenir {
         this.prijs = prijs;
     }
 
-    public String getPrice() {
-        DecimalFormat df = new DecimalFormat("#.00");
+    public String getName() {
+        return this.objectNaam;
+    }
+
+    public double getPrice() {
+        return prijs;
+    }
+
+    public String getStringPrice() {
+        DecimalFormat df = new DecimalFormat("0.00");
         return df.format(this.prijs);
     }
 

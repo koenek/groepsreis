@@ -19,10 +19,14 @@ public class Locatie {
         winkelVoorraad.add(s);
     }
 
+    public ArrayList<Souvenir> getShopItems() {
+        return winkelVoorraad;
+    }
+
     public void printShopItems() {
         for (Souvenir s : winkelVoorraad) {
             System.out.print("- ");
-            System.out.println(s + " € " + s.getPrice());
+            System.out.println(s + " € " + s.getStringPrice());
         }
     }
 
